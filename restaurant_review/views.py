@@ -8,7 +8,7 @@ def ReviewPageView(request):
     if request.method == 'POST':
         if request.POST.get('pred_button'):
             text = request.POST['review_text']
-            model = review_model('model', 'vectorizer')
+            model = review_model("model", "vectorizer")
             model.clean_data(str(text))
             pred = model.predict()
         else:
@@ -17,6 +17,6 @@ def ReviewPageView(request):
         print('Error Occured')
 
     return render(request, 'review/review.html',
-    {'pred':pred
+    {'pred':1
     
     })

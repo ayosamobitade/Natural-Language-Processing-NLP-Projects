@@ -1,35 +1,38 @@
-{% extends "_base.html" %}
 
+{% extends "_base.html" %}
+{% load static %}
 
 {% block content %}
 
 <form action="{% url "reviewpage" %}" method="post">
+  {% csrf_token %}
     <div class="mb-3">
       <label for="exampleInputEmail1" class="form-label">Please enter your review:</label>
       <input type="text" name="review_text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
     </div>
-    <button type="submit" name="pred_button" class="btn btn-primary">Submit</button>
+    <button type="submit" name="pred_button" value="Save&Next" class="btn btn-primary">Submit</button>
   </form>
-
+{% if pred %}
 {% if pred == 1 %}
   <div class="card" style="width: 18rem;">
-    <img src="..." class="card-img-top" alt="...">
+    <img src="static/review/images/positive.url" class="card-img-top" alt="...">
     <div class="card-body">
       <h5 class="card-title">You Made A Positive Review</h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <a href="{% url 'reviewpage' %}" class="btn btn-primary">Enter a new preview</a>
+      <p class="card-text">Whenever you enter a positive comment, this is card you will be shown accord to the predictions by the model created for this review.</p>
+      <a href="{% url 'reviewpage' %}" class="btn btn-primary">Enter a New Review</a>
     </div>
   </div>
-{% else %}
+{% elif pred == 0 %}
   <div class="card" style="width: 18rem;">
-    <img src="..." class="card-img-top" alt="...">
+    <img src="static/review/images/Negative.url" class="card-img-top" alt="...">
     <div class="card-body">
       <h5 class="card-title">You Made A Negative Review</h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      <p class="card-text">Whenever you enter a Negative comment, this is card you will be shown accord to the predictions by the model created for this review.</p>
       <a href="{% url 'reviewpage' %}" class="btn btn-primary">Enter a new Preview</a>
     </div>
   </div>
  
+  {% endif %}
   {% endif %}
   
 {% endblock %}
