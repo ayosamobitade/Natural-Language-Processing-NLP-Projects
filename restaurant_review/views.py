@@ -3,4 +3,8 @@ from django.shortcuts import render
 # Create your views here.
 
 def ReviewPageView(request):
-    return render(request, 'review/review.html')
+    pred = 0
+    return render(request, 'review/review.html',
+    {'pred':pred
+    
+    })

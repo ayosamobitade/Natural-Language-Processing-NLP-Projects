@@ -1,6 +1,8 @@
 {% extends "_base.html" %}
 
+
 {% block content %}
+
 <form action="{% url "reviewpage" %}">
     <div class="mb-3">
       <label for="exampleInputEmail1" class="form-label">Please enter your review:</label>
@@ -8,5 +10,27 @@
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>
+
+{% if pred == 1 %}
+  <div class="card" style="width: 18rem;">
+    <img src="..." class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">You Made A Positive Review</h5>
+      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      <a href="{% url 'reviewpage' %}" class="btn btn-primary">Enter a new preview</a>
+    </div>
+  </div>
+{% else %}
+  <div class="card" style="width: 18rem;">
+    <img src="..." class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">You Made A Negative Review</h5>
+      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      <a href="{% url 'reviewpage' %}" class="btn btn-primary">Enter a new Preview</a>
+    </div>
+  </div>
+ 
+  {% endif %}
+  
 {% endblock %}
 
