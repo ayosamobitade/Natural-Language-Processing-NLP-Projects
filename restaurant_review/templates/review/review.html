@@ -4,15 +4,8 @@
 
 {% block content %}
 
-<form action="{% url "reviewpage" %}" method="post">
-  {% csrf_token %}
-    <div class="mb-3">
-      <label for="exampleInputEmail1" class="form-label">Please enter your review:</label>
-      <input type="text" name="review_text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-    </div>
-    <button type="submit" name="pred_button" value="Save&Next" class="btn btn-primary">Submit</button>
-  </form>
-{% if pred %}
+
+
 {% if pred == 1 %}
   <div class="card" style="width: 18rem;">
     <img src="static/review/images/positive.url" class="card-img-top" alt="...">
@@ -22,6 +15,8 @@
       <a href="{% url 'reviewpage' %}" class="btn btn-primary">Enter a New Review</a>
     </div>
   </div>
+
+
 {% elif pred == 0 %}
   <div class="card" style="width: 18rem;">
     <img src="static/review/images/Negative.url" class="card-img-top" alt="...">
@@ -31,9 +26,19 @@
       <a href="{% url 'reviewpage' %}" class="btn btn-primary">Enter a new Preview</a>
     </div>
   </div>
- 
-  {% endif %}
-  {% endif %}
+
+ {% else %}
+  <form action="{% url "reviewpage" %}" method="post">
+    {% csrf_token %}
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Please enter your review:</label>
+        <input type="text" name="review_text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+      </div>
+      <button type="submit" name="pred_button" value="Save&Next" class="btn btn-primary">Submit</button>
+    </form>
+  
+    {% endif %}
+  
   
 {% endblock %}
 

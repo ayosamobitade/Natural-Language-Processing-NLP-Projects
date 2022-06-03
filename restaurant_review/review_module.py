@@ -1,27 +1,25 @@
 # import all necessary library
 
 import re
-import nltk
 from nltk.corpus import stopwords
 from nltk.stem.porter import PorterStemmer
 import pickle
-import numpy as np
-import pandas as pd
-from sklearn.model_selection import train_test_split
-from sklearn.naive_bayes import GaussianNB
-from sklearn.feature_extraction.text import CountVectorizer
+
+
+
+
 
 
 #create the review model
 
 class review_model():
     def __init__(self, model_file, vectorizer_file):
-        with open('model', 'rb') as model_file, open('vectorizer', 'rb') as vectorizer_file:
+        with open('restaurant_review/model', 'rb') as model_file, open('restaurant_review/vectorizer', 'rb') as vectorizer_file:
             self.classifier = pickle.load(model_file)
             self.cv = pickle.load(vectorizer_file)
             self.data = None
             
-    # Clean the data    
+    # Clean the data and create corpus   
     def clean_data(self, text_input):
         corpus = []
         review = re.sub('[^a-zA-Z]', ' ', text_input)
