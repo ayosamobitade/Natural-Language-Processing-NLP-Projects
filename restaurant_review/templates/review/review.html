@@ -8,10 +8,10 @@
 
 {% if pred == 1 %}
   <div class="card" style="width: 18rem;">
-    <img src="static/review/images/positive.url" class="card-img-top" alt="...">
+    <img src="{% static '/review/images/positive.jpg' %}" class="card-img-top" alt="...">
     <div class="card-body">
       <h5 class="card-title">You Made A Positive Review</h5>
-      <p class="card-text">Whenever you enter a positive comment, this is card you will be shown accord to the predictions by the model created for this review.</p>
+      <p class="card-text">Whenever you enter a positive comment, this card you will be shown according to the predictions by the model created for this review.</p>
       <a href="{% url 'reviewpage' %}" class="btn btn-primary">Enter a New Review</a>
     </div>
   </div>
@@ -19,10 +19,10 @@
 
 {% elif pred == 0 %}
   <div class="card" style="width: 18rem;">
-    <img src="static/review/images/Negative.url" class="card-img-top" alt="...">
+    <img src="{% static '/review/images/negative.jpg' %}" class="card-img-top" alt="...">
     <div class="card-body">
       <h5 class="card-title">You Made A Negative Review</h5>
-      <p class="card-text">Whenever you enter a Negative comment, this is card you will be shown accord to the predictions by the model created for this review.</p>
+      <p class="card-text">Whenever you enter a Negative comment, this card you will be shown according to the predictions by the model created for this review.</p>
       <a href="{% url 'reviewpage' %}" class="btn btn-primary">Enter a new Preview</a>
     </div>
   </div>
